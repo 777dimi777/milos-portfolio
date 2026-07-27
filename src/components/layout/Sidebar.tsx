@@ -1,6 +1,5 @@
 "use client";
-
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navigationItems } from "@/data/navigation";
@@ -22,11 +21,10 @@ const socialLinks = [
     ariaLabel: "Send an email",
   },
 ];
-
 export function Sidebar() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const [activeSection, setActiveSection] = useState("home");
   useEffect(() => {
     if (!menuOpen) {
       return;
@@ -39,21 +37,99 @@ export function Sidebar() {
       document.body.style.overflow = previousOverflow;
     };
   }, [menuOpen]);
+  useEffect(() => {
+    if (pathname !== "/") {
+      return;
+    }
 
+    const sectionIds = [
+      "home",
+      "projects",
+      "about",
+      "services",
+      "process",
+      "contact",
+    ];
+
+    let animationFrameId = 0;
+
+    function updateActiveSection() {
+      const viewportMarker = window.innerHeight * 0.35;
+      let currentSection = "home";
+
+      for (const sectionId of sectionIds) {
+        const section = document.getElementById(sectionId);
+
+        if (!section) {
+          continue;
+        }
+
+        const sectionPosition = section.getBoundingClientRect();
+
+        if (sectionPosition.top <= viewportMarker) {
+          currentSection = sectionId;
+        }
+      }
+
+      const reachedPageBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 5;
+
+      if (reachedPageBottom) {
+        currentSection = "contact";
+      }
+
+      setActiveSection((previousSection) =>
+        previousSection === currentSection ? previousSection : currentSection,
+      );
+    }
+
+    function scheduleUpdate() {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = requestAnimationFrame(updateActiveSection);
+    }
+
+    scheduleUpdate();
+
+    window.addEventListener("scroll", scheduleUpdate, {
+      passive: true,
+    });
+    window.addEventListener("resize", scheduleUpdate);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+    };
+  }, [pathname]);
   function isActive(href: string) {
-    const pathWithoutHash = href.split("#")[0];
+    if (pathname === "/") {
+      const sectionId = href === "/" ? "home" : href.replace("/", "");
 
-    if (href.includes("#")) {
+      return activeSection === sectionId;
+    }
+
+    if (href === "/") {
       return false;
     }
 
-    if (pathWithoutHash === "/") {
-      return pathname === "/";
-    }
-
-    return pathname.startsWith(pathWithoutHash);
+    return pathname === href || pathname.startsWith(`${href}/`);
   }
+  function handleNavigationClick(
+    event: MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) {
+    setMenuOpen(false);
 
+    if (href === "/" && pathname === "/") {
+      event.preventDefault();
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  }
   return (
     <>
       <aside className="fixed inset-y-0 left-0 z-50 hidden w-28 flex-col border-r border-white/10 bg-[#070806] lg:flex">
@@ -61,6 +137,7 @@ export function Sidebar() {
           <Link
             href="/"
             aria-label="Miloš Dimitrijević home"
+            onClick={(event) => handleNavigationClick(event, "/")}
             className="text-2xl font-black tracking-[-0.12em]"
           >
             M<span className="text-[#d7ff38]">D</span>
@@ -75,6 +152,7 @@ export function Sidebar() {
               <Link
                 key={item.label}
                 href={item.href}
+                onClick={(event) => handleNavigationClick(event, item.href)}
                 className={`group relative flex flex-1 flex-col items-center justify-center gap-2 border-b border-white/10 px-2 text-center transition ${
                   active
                     ? "bg-[#d7ff38]/[0.06] text-[#d7ff38]"
@@ -112,14 +190,8 @@ export function Sidebar() {
               <a
                 key={social.label}
                 href={social.href}
-                target={
-                  social.href.startsWith("http") ? "_blank" : undefined
-                }
-                rel={
-                  social.href.startsWith("http")
-                    ? "noreferrer"
-                    : undefined
-                }
+                target={social.href.startsWith("http") ? "_blank" : undefined}
+                rel={social.href.startsWith("http") ? "noreferrer" : undefined}
                 aria-label={social.ariaLabel}
                 className="flex h-11 items-center justify-center border-r border-white/10 text-[9px] font-bold text-zinc-600 transition last:border-r-0 hover:bg-[#d7ff38] hover:text-black"
               >
@@ -134,7 +206,7 @@ export function Sidebar() {
         <Link
           href="/"
           aria-label="Miloš Dimitrijević home"
-          onClick={() => setMenuOpen(false)}
+          onClick={(event) => handleNavigationClick(event, "/")}
           className="text-xl font-black tracking-[-0.12em]"
         >
           M<span className="text-[#d7ff38]">D</span>
@@ -190,7 +262,7 @@ export function Sidebar() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(event) => handleNavigationClick(event, item.href)}
                   className={`group grid grid-cols-[auto_1fr_auto] items-center gap-5 border-b border-white/10 px-6 py-5 transition ${
                     active
                       ? "bg-[#d7ff38]/[0.06] text-[#d7ff38]"
@@ -230,13 +302,9 @@ export function Sidebar() {
                 <a
                   key={social.label}
                   href={social.href}
-                  target={
-                    social.href.startsWith("http") ? "_blank" : undefined
-                  }
+                  target={social.href.startsWith("http") ? "_blank" : undefined}
                   rel={
-                    social.href.startsWith("http")
-                      ? "noreferrer"
-                      : undefined
+                    social.href.startsWith("http") ? "noreferrer" : undefined
                   }
                   aria-label={social.ariaLabel}
                   className="flex h-11 w-11 items-center justify-center border border-white/10 text-[10px] font-bold text-zinc-500 transition hover:border-[#d7ff38] hover:bg-[#d7ff38] hover:text-black"

@@ -59,7 +59,7 @@ export function HeroSection() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
                 href="/projects"
-                className="group inline-flex items-center gap-4 bg-[#d7ff38] px-7 py-4 text-sm font-bold uppercase tracking-[0.12em] text-black transition hover:bg-white"
+                className="group inline-flex items-center gap-4 bg-[#d7ff38] px-7 py-4 text-sm font-bold uppercase tracking-[0.12em] text-[#070806] transition hover:bg-white hover:text-[#070806]"
               >
                 Explore my work
                 <span className="transition-transform group-hover:translate-x-1">
@@ -140,7 +140,7 @@ export function HeroSection() {
                 fill
                 priority
                 sizes="(max-width: 1024px) 80vw, 40vw"
-                className="object-cover object-top grayscale-[20%]"
+                className="object-cover  scale-[1.5] object-[center_72%] object-top grayscale-[20%]"
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-[#070806] via-transparent to-transparent" />

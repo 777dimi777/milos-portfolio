@@ -55,9 +55,7 @@ export function AboutSection() {
           <div>
             <h2 className="max-w-5xl text-4xl font-black uppercase leading-[0.9] tracking-[-0.06em] sm:text-6xl lg:text-8xl">
               Developer with a
-              <span className="block text-[#d7ff38]">
-                product mindset.
-              </span>
+              <span className="block text-[#d7ff38]">product mindset.</span>
             </h2>
           </div>
         </div>
@@ -69,7 +67,7 @@ export function AboutSection() {
               alt="Miloš Dimitrijević"
               fill
               sizes="(max-width: 1280px) 100vw, 40vw"
-              className="object-cover object-top grayscale-[15%]"
+              className="scale-[1.5] object-cover object-[center_72%] grayscale-[15%]"
             />
 
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent" />
@@ -115,9 +113,9 @@ export function AboutSection() {
 
               <div className="space-y-5 text-sm leading-7 text-zinc-400">
                 <p>
-                  I study Computing and Informatics at the Faculty of
-                  Electronic Engineering in Niš, while continuously developing
-                  practical full-stack applications.
+                  I study Computing and Informatics at the Faculty of Electronic
+                  Engineering in Niš, while continuously developing practical
+                  full-stack applications.
                 </p>
 
                 <p>
