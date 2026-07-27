@@ -13,4 +13,10 @@ export type Project = {
   liveUrl?: string;
   coverImage?: string;
   gallery: string[];
+  year: string;
+  role: string;
+  overview: string;
+  challenge: string;
+  solution: string;
+  features: string[];
 };

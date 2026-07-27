@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import type { Project } from "@/types/project";
-
+import Link from "next/link";
 type ProjectCardProps = {
   project: Project;
 };
@@ -100,10 +100,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       <div className="flex flex-1 flex-col px-5 pb-5">
-        <p className="text-sm leading-6 text-zinc-400">
-          {project.description}
-        </p>
-
+        <p className="text-sm leading-6 text-zinc-400">{project.description}</p>
         <div className="mt-5 flex flex-wrap gap-2">
           {project.technologies.map((technology) => (
             <span
@@ -114,7 +111,26 @@ export function ProjectCard({ project }: ProjectCardProps) {
             </span>
           ))}
         </div>
+        <div className="mt-auto flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-5">
+          <Link
+            href={`/projects/${project.slug}`}
+            className="group/link inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-[var(--project-accent)] transition hover:text-white"
+          >
+            View case study
+            <span className="transition-transform group-hover/link:translate-x-1">
+              →
+            </span>
+          </Link>
 
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="text-[10px] font-bold uppercase tracking-[0.14em] text-zinc-600 transition hover:text-white"
+          >
+            GitHub ↗
+          </a>
+        </div>{" "}
         <div className="mt-auto flex items-center justify-between gap-4 border-t border-white/10 pt-5">
           <span className="text-[10px] uppercase tracking-[0.15em] text-zinc-600">
             Case study coming next
