@@ -1,36 +1,182 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Miloš Dimitrijević — Developer Portfolio
 
-## Getting Started
+![Portfolio preview](https://milos-portfolio-eight.vercel.app/opengraph-image)
 
-First, run the development server:
+A modern personal portfolio website showcasing my full-stack projects, technical skills, development services and contact information.
+
+## Live Website
+
+[Visit the live portfolio](https://milos-portfolio-eight.vercel.app)
+
+## About the Project
+
+This portfolio was designed and developed to present my work through detailed project case studies rather than simple project cards.
+
+It includes information about my development approach, technology stack, services, work process and selected full-stack and frontend applications.
+
+## Featured Projects
+
+### Green Nest
+
+A full-stack e-commerce platform for discovering and purchasing decorative plants.
+
+- Next.js
+- NestJS
+- TypeScript
+- Prisma
+- PostgreSQL
+- Status: In development
+
+### EduFlow
+
+A human-centered student productivity platform for organizing subjects, exams, tasks, schedules and academic goals.
+
+- React
+- Vite
+- JavaScript
+- Bootstrap
+- PDF.js
+- Human-Computer Interaction
+
+### Game Arena
+
+A full-stack esports platform for managing teams, tournaments, matches and competitive results.
+
+- Angular
+- NestJS
+- TypeScript
+- RxJS
+- TypeORM
+- PostgreSQL
+
+## Portfolio Features
+
+- Responsive desktop and mobile design
+- Fixed desktop navigation
+- Full-screen mobile navigation
+- Active navigation states
+- Dynamic project case-study pages
+- Real project screenshots
+- GitHub repository integration
+- Contact inquiry form
+- Custom loading and 404 screens
+- Dynamic Open Graph image
+- SEO metadata
+- Sitemap and robots configuration
+- Vercel deployment
+- Automatic deployments from GitHub
+
+## Technology Stack
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Next.js App Router
+- Next.js Image Optimization
+- Vercel
+
+## Project Structure
+
+```text
+src/
+├── app/
+│   ├── about/
+│   ├── contact/
+│   ├── projects/
+│   │   └── [slug]/
+│   ├── services/
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── loading.tsx
+│   ├── not-found.tsx
+│   ├── robots.ts
+│   └── sitemap.ts
+├── components/
+│   ├── layout/
+│   ├── sections/
+│   └── ui/
+├── data/
+└── types/
+
+public/
+├── images/
+└── projects/
+```
+
+## Running the Project Locally
+
+Clone the repository:
+
+```bash
+git clone https://github.com/777dimi777/milos-portfolio.git
+```
+
+Enter the project directory:
+
+```bash
+cd milos-portfolio
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Create a local environment file:
+
+```bash
+cp .env.example .env.local
+```
+
+On Windows PowerShell, you can use:
+
+```powershell
+Copy-Item .env.example .env.local
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Available Scripts
 
-## Learn More
+```bash
+npm run dev
+npm run lint
+npm run build
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```env
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The production URL is automatically resolved using Vercel system environment variables.
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The portfolio is deployed with Vercel and connected to the `main` GitHub branch.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Every push to `main` automatically creates a new production deployment.
+
+## Contact
+
+- Email: [milosdimitrijevicc2005@gmail.com](mailto:milosdimitrijevicc2005@gmail.com)
+- GitHub: [777dimi777](https://github.com/777dimi777)
+- LinkedIn: [Miloš Dimitrijević](https://www.linkedin.com/in/miloš-dimitrijević-874b8423b)
+
+---
+
+Designed and developed by Miloš Dimitrijević.
