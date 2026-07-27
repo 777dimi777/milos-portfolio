@@ -9,4 +9,8 @@ export type Project = {
   technologies: string[];
   status: ProjectStatus;
   accent: string;
+  githubUrl: string;
+  liveUrl?: string;
+  coverImage?: string;
+  gallery: string[];
 };

@@ -1,4 +1,5 @@
-import { Project } from "@/types/project";
+import type { Project } from "@/types/project";
+
 export const projects: Project[] = [
   {
     number: "01",
@@ -16,6 +17,8 @@ export const projects: Project[] = [
     ],
     status: "In development",
     accent: "#d7ff38",
+    githubUrl: "https://github.com/777dimi777/green-nest",
+    gallery: [],
   },
   {
     number: "02",
@@ -24,9 +27,24 @@ export const projects: Project[] = [
     category: "Student productivity platform",
     description:
       "A human-centered productivity application that helps students organize subjects, exams, daily tasks, schedules and academic goals.",
-    technologies: ["React", "Vite", "JavaScript", "Bootstrap", "HCI"],
+    technologies: [
+      "React",
+      "Vite",
+      "JavaScript",
+      "Bootstrap",
+      "PDF.js",
+      "HCI",
+    ],
     status: "Completed",
-    accent: "#8b7cff",
+    accent: "#45e884",
+    githubUrl: "https://github.com/777dimi777/hci-eduflow",
+    coverImage: "/projects/eduflow-dashboard.png",
+    gallery: [
+      "/projects/eduflow-dashboard.png",
+      "/projects/eduflow-calendar.png",
+      "/projects/eduflow-grade-goal.png",
+      "/projects/eduflow-pdf-import.png",
+    ],
   },
   {
     number: "03",
@@ -34,15 +52,24 @@ export const projects: Project[] = [
     title: "Game Arena",
     category: "Esports tournament platform",
     description:
-      "A competitive gaming platform for creating tournaments, managing teams, joining competitions and following live leaderboard results.",
+      "A competitive gaming platform for creating tournaments, managing teams, joining competitions and following match results.",
     technologies: [
       "Angular",
       "NestJS",
       "TypeScript",
       "RxJS",
+      "TypeORM",
       "PostgreSQL",
     ],
     status: "Completed",
-    accent: "#ff435f",
+    accent: "#35b8ff",
+    githubUrl: "https://github.com/777dimi777/game-arena",
+    coverImage: "/projects/game-arena-home.png",
+    gallery: [
+      "/projects/game-arena-home.png",
+      "/projects/game-arena-tournaments.png",
+      "/projects/game-arena-teams.png",
+      "/projects/game-arena-leaderboard.png",
+    ],
   },
 ];
